@@ -271,7 +271,7 @@ $(document).ready(function(){
 				var Menu 			= (function(){
 					var init				= function() {
 						loadPage();
-						initWindowEvent();
+						//initWindowEvent();
 					},
 					loadPage			= function() {
 						/*
@@ -310,7 +310,7 @@ $(document).ready(function(){
 					},
 					slideOutMenu		= function() {
 						/* calculate new width for the menu */
-						var new_w	= $(window).width() - $title.outerWidth(true) - 10;
+						var new_w	= 1300 - $title.outerWidth(true) - 15;
 						return $.Deferred(
 						function(dfd) {
 							//slides out the menu
@@ -442,10 +442,14 @@ $(document).ready(function(){
 					},
 
 					openSubMenu			= function($item, $sub_menu, el_image) {
+						 	
+						$sub_menu.appendTo('#contenedor');
+						$sub_menu.css('right', '2');
 						$sub_menu.stop()
 						.animate({
 							height		: '400px',
-							marginTop	: '-200px'
+							marginTop	: '120px'
+							
 						}, 400, function() {
 										//the bg image changes
 										$sub_menu.css({border: "solid black"});
@@ -482,27 +486,10 @@ $(document).ready(function(){
 					},
 						/* makes an image "fullscreen" and centered */
 					adjustImageSize		= function($img) {
-						var w_w	= $(window).width(),
-						w_h	= $(window).height(),
-						r_w	= w_h / w_w,
-						i_w	= $img.width(),
-						i_h	= $img.height(),
-						r_i	= i_h / i_w,
-						new_w,new_h,
-						new_left,new_top;
-							
-						if(r_w > r_i){
-							new_h	= w_h;
-							new_w	= w_h / r_i;
-						}
-						else{
-							new_h	= w_w * r_i;
-							new_w	= w_w;
-						}
 							
 						$img.css({
-							width	: new_w + 'px',
-							height	: new_h + 'px',
+							width	: 1300 + 'px',
+							height	: $(window).height + 'px',
 					
 						});
 					},
